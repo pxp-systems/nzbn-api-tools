@@ -7291,6 +7291,18 @@ paths:
             - ACTIVE
             - INACTIVE
         - in: query
+          name: parent-gln
+          description: >-
+            Allows a parent GLN to be nominated for the Organisation Part to
+            support multi-tier hierarchies.
+          type: array
+          collectionFormat: multi
+        - in: query
+          name: purpose
+          description: One of E_INVOICING, OTHER. If not supplied will return all.
+          type: array
+          collectionFormat: multi
+        - in: query
           name: page
           description: Format - int32. Number of search records page (for pagination)
           type: integer
@@ -7483,7 +7495,7 @@ paths:
         - 10. Find Organisation Parts
       summary: OP024 - Query Organisation Part Purchase
       description: Query Organisation Part Purchase
-      operationId: CheckOrganisationPartPurchase
+      operationId: checkOrganisationPartPurchase
       produces:
         - application/json
       parameters:
@@ -13240,6 +13252,11 @@ paths:
             entities (not removed ones). If True, return all current, pending,
             revoked and historic authorities.
           type: boolean
+        - in: query
+          name: authority-status
+          description: Authority Status to restrict results to
+          type: array
+          collectionFormat: multi
         - in: query
           name: page
           description: >-
